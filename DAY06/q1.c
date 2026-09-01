@@ -1,4 +1,5 @@
-/*#include <stdio.h>
+/*biodata
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/socket.h>
