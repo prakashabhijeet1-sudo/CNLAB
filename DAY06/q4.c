@@ -1,30 +1,36 @@
-/*
-//udp client
-#include<stdio.h>
-#include<sys/types.h>
-#include<sys/socket.h>
-#include<netinet/in.h>
-#include<arpa/inet.h>
-#include<fcntl.h>
-#include<string.h>
-#include<unistd.h>
+/*sum of three numbers
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
 int main()
 {
-int i,sockfd,length;
-char buf[100],buf1[100];
-struct sockaddr_in sa;
+    int sockfd, len, k;
+    int a, b, c;
+    char buf[100];
 
-sockfd=socket(AF_INET,SOCK_DGRAM,0);
+    struct sockaddr_in sa;
 
-sa.sin_family=AF_INET;
-sa.sin_addr.s_addr=inet_addr("127.0.0.1");//loop back ip address
-sa.sin_port=htons(6027);
-printf("Enter a message\t");
-gets(buf);
-sendto(sockfd,buf,strlen(buf),0,(struct sockaddr *)&sa,sizeof(sa));
-length=sizeof(sa);
-int k=recvfrom(sockfd,buf1,100,0,(struct sockaddr *)&sa,&length);
-buf1[k]='\0';
-printf("Received: %s\n",buf1);
-close(sockfd);
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+
+    sa.sin_family = AF_INET;
+    sa.sin_addr.s_addr = inet_addr("127.0.0.1");
+    sa.sin_port = htons(6027);
+
+    printf("Enter first number: ");
+    scanf("%d", &a);
+
+    printf("Enter second number: ");
+    scanf("%d", &b);
+
+    printf("Enter third number: ");
+    scanf("%d", &c);
+
+    printf("\nNumbers entered: %d %d %d\n", a, b, c);
+
+    sprintf(buf, "%d %d %d", a, b, c);
+               
 }*/
