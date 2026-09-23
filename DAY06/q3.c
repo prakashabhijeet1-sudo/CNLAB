@@ -30,4 +30,22 @@ int main()
                  (struct sockaddr *)&ca, &len);
 
     buf[k] = '\0';
+    
+    sscanf(buf, "%d %d %d", &a, &b, &c);
+
+    printf("Received numbers: %d %d %d\n", a, b, c);
+
+    sum = a + b + c;
+
+    printf("Addition = %d\n", sum);
+
+    sprintf(result, "Addition = %d", sum);
+
+    sendto(sockfd, result, strlen(result), 0,
+           (struct sockaddr *)&ca, len);
+
+    close(sockfd);
+
+    return 0;
+}
 */
