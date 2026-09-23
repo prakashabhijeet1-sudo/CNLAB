@@ -32,5 +32,23 @@ int main()
     printf("\nNumbers entered: %d %d %d\n", a, b, c);
 
     sprintf(buf, "%d %d %d", a, b, c);
+    
+    sendto(sockfd, buf, strlen(buf), 0,
+           (struct sockaddr *)&sa, sizeof(sa));
+
+    len = sizeof(sa);
+
+    k = recvfrom(sockfd, buf, 100, 0,
+                 (struct sockaddr *)&sa, &len);
+
+    buf[k] = '\0';
+
+    printf("Server: %s\n", buf);
+
+    close(sockfd);
+
+    return 0;
+}
+
                
 }*/
