@@ -23,4 +23,26 @@ int main()
     fgets(dob, 20, stdin);
     printf("Enter State: ");
     fgets(state, 50, stdin);
+    
+    sprintf(biodata,
+            "Name: %sAge: %sDOB: %sState: %s",
+            name, age, dob, state);
+
+    sendto(sockfd, biodata, strlen(biodata), 0,
+           (struct sockaddr *)&sa, sizeof(sa));
+
+    len = sizeof(sa);
+
+    k = recvfrom(sockfd, ack, 100, 0,
+                 (struct sockaddr *)&sa, &len);
+
+    ack[k] = '\0';
+
+    printf("\nServer: %s\n", ack);
+
+    close(sockfd);
+
+    return 0;
+}
+
 */
