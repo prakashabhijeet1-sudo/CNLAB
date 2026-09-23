@@ -31,5 +31,46 @@ int main()
                  (struct sockaddr *)&ca, &len);
 
     buf[k] = '\0';
+    sscanf(buf, "%f %c %f", &a, &op, &b);
+
+    printf("Received: %.2f %c %.2f\n", a, op, b);
+
+    switch(op)
+    {
+        case '+':
+            result = a + b;
+            break;
+
+        case '-':
+            result = a - b;
+            break;
+
+        case '*':
+            result = a * b;
+            break;
+
+        case '/':
+            if(b != 0)
+                result = a / b;
+            else
+            {
+                printf("Cannot divide by zero\n");
+                close(sockfd);
+                return 0;
+                     return 0;
+            }
+            break;
+        default:
+            printf("Invalid operator\n");
+            close(sockfd);
+            return 0;
+    }
+    printf("Result = %.2f\n", result);
+    sprintf(ans, "Result = %.2f", result);
+    sendto(sockfd, ans, strlen(ans), 0,
+           (struct sockaddr *)&ca, len);
+    close(sockfd);
+    return 0;
+}
                     
 */
