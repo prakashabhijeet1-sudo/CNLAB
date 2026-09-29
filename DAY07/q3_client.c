@@ -1,5 +1,4 @@
 /*
-  GNU nano 7.2                                                 q3_client.c *
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
